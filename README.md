@@ -1,4 +1,4 @@
-# BigQuery Practice Queries
+# BigQuery SQL Queries
 
 A collection of 49 SQL queries I ran in Google BigQuery (sandbox), grouped by topic. Each query has a short note explaining what it does.
 
