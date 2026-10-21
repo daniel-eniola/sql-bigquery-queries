@@ -13,7 +13,7 @@ A collection of 49 SQL queries I ran in Google BigQuery (sandbox), grouped by to
 | `store_transactions.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
 | `customer_purchase_schema.json` | setup, no queries | Schema for `customer_data.customer_purchase` |
 
-## Skills practised
+## Skills covered
 
 - Selecting columns, `DISTINCT`, `WHERE` filters
 - String functions: `LENGTH`, `SUBSTR`, `TRIM`
