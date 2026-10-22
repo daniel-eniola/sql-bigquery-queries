@@ -10,7 +10,7 @@ A collection of 49 SQL queries I ran in Google BigQuery (sandbox), grouped by to
 | `nyc_tree_census.sql` | #16-19 | `bigquery-public-data.new_york_trees` |
 | `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` |
 | `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project, from the Coursera "Clean data using SQL" activity) |
-| `store_transactions.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
+| `customer_purchase.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
 | `customer_purchase_schema.json` | setup, no queries | Schema for `customer_data.customer_purchase` |
 
 ## Skills covered
@@ -34,7 +34,7 @@ A collection of 49 SQL queries I ran in Google BigQuery (sandbox), grouped by to
 
 ## Table setup: `customer_purchase`
 
-The `customer_purchase` table (used in `store_transactions.sql`) was created in the `customer_data` dataset by uploading the Store Transaction .csv, with the schema edited as text instead of auto-detected. The full schema is saved in `customer_purchase_schema.json`.
+The `customer_purchase` table (used in `customer_purchase.sql`) was created in the `customer_data` dataset by uploading the Store Transaction .csv, with the schema edited as text instead of auto-detected. The full schema is saved in `customer_purchase_schema.json`.
 
 `purchase_price` is a STRING on purpose, so it can be converted with `CAST` in the queries.
 
