@@ -1,10 +1,10 @@
--- Store transactions queries
+-- Customer purchase queries
 -- Table: project-cc781377-6842-4add-a3a.customer_data.customer_purchase (US location)
 -- Setup: the table was created from the Store Transaction .csv inside the existing customer_data dataset,
 -- with the schema edited as text (see customer_purchase_schema.json) and "Header rows to skip" set to 1.
 -- Columns: date (DATETIME); transaction_id, customer_id, purchase_size (INTEGER);
 -- product, product_code, product_color (STRING); product_price, revenue (FLOAT);
--- purchase_price (STRING, deliberately, so that CAST can be practised).
+-- purchase_price (STRING, deliberately, so that it has to be converted with CAST).
 
 -- 44. Sort purchase_price from highest to lowest
 -- Note: purchase_price is stored as a STRING, so ORDER BY sorts it as text, character by character.
