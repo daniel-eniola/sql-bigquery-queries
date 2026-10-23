@@ -1,6 +1,5 @@
 -- London bicycles queries
 -- Table: bigquery-public-data.london_bicycles.cycle_hire (EU location)
--- Note: the dataset name uses an underscore (london_bicycles), not a hyphen.
 
 -- 20. Return the end station name for the bike trip with rental_id 57635395
 SELECT
