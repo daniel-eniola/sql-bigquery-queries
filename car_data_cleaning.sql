@@ -1,7 +1,8 @@
 -- Car data cleaning queries
 -- Table: project-cc781377-6842-4add-a3a.cars.car_info (US location)
--- Queries marked "DID NOT RUN" are DML (UPDATE/DELETE). They fail in the BigQuery sandbox with
+-- UPDATE and DELETE queries change data, so they fail in the BigQuery sandbox with
 -- "Billing has not been enabled for this project. DML queries are not allowed in the free tier."
+-- After the project was upgraded they were run, and the rows each one affected are noted below.
 
 -- 30. Check the unique values in fuel_type
 -- Expected: only "gas" and "diesel". The result confirms there are no unexpected values.
@@ -17,14 +18,15 @@ SELECT
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`;
 
 -- 32. Find rows with a missing num_of_doors value
--- Returns 2 rows (a gas sedan and a diesel sedan), which need to be filled in.
+-- Returns 2 rows (a Dodge gas sedan and a Mazda diesel sedan), which need to be filled in.
 SELECT
   *
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`
 WHERE num_of_doors IS NULL;
 
--- 33. Fill in num_of_doors for Dodge gas sedans (DID NOT RUN in sandbox: DML not allowed)
+-- 33. Fill in num_of_doors for Dodge gas sedans
 -- The sales manager confirmed all Dodge gas sedans sold had four doors.
+-- Result: modified 3 rows. Re-running #32 afterwards returned 1 row (the Mazda).
 -- Note: this updates every matching row, not just the null one, which is fine here because they all have four doors.
 UPDATE `project-cc781377-6842-4add-a3a.cars.car_info`
 SET num_of_doors = 'four'
@@ -32,8 +34,10 @@ WHERE make = 'dodge'
   AND fuel_type = 'gas'
   AND body_style = 'sedan';
 
--- 34. Fill in num_of_doors for Mazda diesel sedans (DID NOT RUN in sandbox: DML not allowed)
+-- 34. Fill in num_of_doors for Mazda diesel sedans
 -- The sales manager confirmed all Mazda diesel sedans sold had four doors.
+-- Result: modified 2 rows (BigQuery counts every row the WHERE clause matches, including one that already had a door value).
+-- Re-running #32 afterwards returned 0 rows, so no missing num_of_doors values remain.
 UPDATE `project-cc781377-6842-4add-a3a.cars.car_info`
 SET num_of_doors = 'four'
 WHERE make = 'mazda'
@@ -42,11 +46,13 @@ WHERE make = 'mazda'
 
 -- 35. Check the unique values in num_of_cylinders
 -- Returns 8 rows, but "two" appears twice: once spelled correctly and once as "tow" (a typo).
+-- After the fix in #36, re-running it returns 7 rows.
 SELECT
   DISTINCT num_of_cylinders
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`;
 
--- 36. Fix the "tow" typo in num_of_cylinders (DID NOT RUN in sandbox: DML not allowed)
+-- 36. Fix the "tow" typo in num_of_cylinders
+-- Result: modified 1 row. Re-running #35 afterwards returned 7 rows, with "two" appearing once.
 UPDATE `project-cc781377-6842-4add-a3a.cars.car_info`
 SET num_of_cylinders = 'two'
 WHERE num_of_cylinders = 'tow';
@@ -68,33 +74,37 @@ WHERE compression_ratio <> 70;
 
 -- 39. Count how many rows have the erroneous compression_ratio of 70
 -- Safety check before deleting: confirms only 1 row is affected, not a large share of the data.
+-- Result: 1. Re-running it after the delete in #40 returned 0.
 SELECT
   COUNT(*) AS num_of_rows_to_delete
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`
 WHERE compression_ratio = 70;
 
--- 40. Delete the row with the erroneous compression_ratio of 70 (DID NOT RUN in sandbox: DML not allowed)
+-- 40. Delete the row with the erroneous compression_ratio of 70
 -- The sales manager confirmed this row was entered in error. Always run #39 first to check the row count.
--- In the sandbox, replacing DELETE with SELECT * would show which row would be deleted.
+-- Result: removed 1 row. (In the sandbox, replacing DELETE with SELECT * shows which row would be deleted.)
 DELETE `project-cc781377-6842-4add-a3a.cars.car_info`
 WHERE compression_ratio = 70;
 
 -- 41. Check the unique values in drive_wheels
 -- Returns 4 rows: rwd, fwd, and "4wd" twice. DISTINCT shows it twice because one has a hidden extra space.
+-- After the TRIM update in #43, re-running it returns 3 rows.
 SELECT
   DISTINCT drive_wheels
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`;
 
 -- 42. Check the length of each drive_wheels value
 -- Confirms the cause: one "4wd" has 4 characters instead of 3, so it contains an extra space.
+-- After the TRIM update in #43, every value has length 3 and "4wd" appears once.
 SELECT
   DISTINCT drive_wheels,
   LENGTH(drive_wheels) AS string_length
 FROM `project-cc781377-6842-4add-a3a.cars.car_info`;
 
--- 43. Remove extra spaces from drive_wheels (DID NOT RUN in sandbox: DML not allowed)
+-- 43. Remove extra spaces from drive_wheels
 -- TRIM() strips leading/trailing spaces. WHERE TRUE applies the update to every row (BigQuery requires a WHERE clause).
--- After this, re-running #41 should return only 3 unique values: rwd, fwd, 4wd.
+-- Result: modified 202 rows (every row in the table, since WHERE TRUE matches all of them, not just the one with the extra space).
+-- Re-running #41 afterwards returned 3 unique values: fwd, rwd, 4wd.
 UPDATE `project-cc781377-6842-4add-a3a.cars.car_info`
 SET drive_wheels = TRIM(drive_wheels)
 WHERE TRUE;
