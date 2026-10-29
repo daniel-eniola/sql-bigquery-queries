@@ -9,7 +9,7 @@ A collection of 49 SQL queries I ran in Google BigQuery, grouped by topic. Each 
 | `baby_names.sql` | #11-15 | `babynames.names_2014/2015/2016` (my own project) |
 | `nyc_tree_census.sql` | #16-19 | `bigquery-public-data.new_york_trees` |
 | `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` |
-| `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project, from the Coursera "Clean data using SQL" activity) |
+| `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project) |
 | `customer_purchase.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
 | `customer_purchase_schema.json` | setup, no queries | Schema for `customer_data.customer_purchase` |
 
