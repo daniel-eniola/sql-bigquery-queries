@@ -1,7 +1,7 @@
 -- Solar potential queries
 -- Table: bigquery-public-data.sunroof_solar.solar_potential_by_postal_code (US location)
 
--- 9. Used to pull out all columns from the table
+-- 9. Pull out all columns from the table
 SELECT
   *
 FROM `bigquery-public-data.sunroof_solar.solar_potential_by_postal_code`;
