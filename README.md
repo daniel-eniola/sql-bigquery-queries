@@ -1,12 +1,12 @@
 # BigQuery SQL Queries
 
-A collection of 49 SQL queries I ran in Google BigQuery, grouped by topic. Each query has a short note explaining what it does.
+A collection of 50 SQL queries I ran in Google BigQuery, grouped by topic. Each query has a short note explaining what it does.
 
 | File | Queries | Dataset |
 |---|---|---|
 | `customer_address_cleaning.sql` | #1-8, #28-29 | `customer_data.customer_address` (my own project) |
 | `solar_potential.sql` | #9-10 | `bigquery-public-data.sunroof_solar` |
-| `baby_names.sql` | #11-15 | `babynames.names_2014/2015/2016` (my own project) |
+| `baby_names.sql` | #11-15, #50 | `babynames.names_2014/2015/2016` (my own project) |
 | `nyc_tree_census.sql` | #16-19 | `bigquery-public-data.new_york_trees` |
 | `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` |
 | `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project) |
