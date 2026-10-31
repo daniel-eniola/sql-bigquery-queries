@@ -8,7 +8,7 @@
 
 -- 44. Sort purchase_price from highest to lowest
 -- Note: purchase_price is stored as a STRING, so ORDER BY sorts it as text, character by character.
--- That is why "89.85" appears above "799.99" and "1000" ends up at the bottom of the 29 rows. See #45 for the fix.
+-- That is why "89.85" appears above "799.99" and "1000" ends up at the bottom of the 29 rows. See the next query for the fix.
 SELECT
   purchase_price
 FROM `project-cc781377-6842-4add-a3a.customer_data.customer_purchase`
@@ -16,9 +16,9 @@ ORDER BY purchase_price DESC;
 
 -- 45. Sort purchase_price from highest to lowest as a number
 -- CAST(purchase_price AS FLOAT64) converts the text to a number first, so the sort is numeric and 1000.0 comes first.
--- Note: there is no alias, so BigQuery names the output column f0_. Add "AS purchase_price_num" for a clearer name.
+-- AS purchase_price_num names the result column instead of the default f0_.
 SELECT
-  CAST(purchase_price AS FLOAT64)
+  CAST(purchase_price AS FLOAT64) AS purchase_price_num
 FROM `project-cc781377-6842-4add-a3a.customer_data.customer_purchase`
 ORDER BY CAST(purchase_price AS FLOAT64) DESC;
 
@@ -32,7 +32,7 @@ FROM `project-cc781377-6842-4add-a3a.customer_data.customer_purchase`
 WHERE date BETWEEN '2020-12-01' AND '2020-12-31';
 
 -- 47. Return the December 2020 transactions with the date only (no time)
--- Same filter as #46, but CAST(date AS date) converts the DATETIME to a DATE, so 2020-12-12T00:00:00 shows as 2020-12-12.
+-- Same filter as the previous query, but CAST(date AS date) converts the DATETIME to a DATE, so 2020-12-12T00:00:00 shows as 2020-12-12.
 -- Returned the same 4 rows. The alias date_only names the new column.
 SELECT
   CAST(date AS date) AS date_only,
