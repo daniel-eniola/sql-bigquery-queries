@@ -1,0 +1,62 @@
+[
+  {
+    "description": "date",
+    "mode": "NULLABLE",
+    "name": "date",
+    "type": "DATETIME"
+  },
+  {
+    "description": "transaction id",
+    "mode": "NULLABLE",
+    "name": "transaction_id",
+    "type": "INTEGER"
+  },
+  {
+    "description": "customer id",
+    "mode": "NULLABLE",
+    "name": "customer_id",
+    "type": "INTEGER"
+  },
+  {
+    "description": "product name",
+    "mode": "NULLABLE",
+    "name": "product",
+    "type": "STRING"
+  },
+  {
+    "description": "product_code",
+    "mode": "NULLABLE",
+    "name": "product_code",
+    "type": "STRING"
+  },
+  {
+    "description": "product color",
+    "mode": "NULLABLE",
+    "name": "product_color",
+    "type": "STRING"
+  },
+  {
+    "description": "product price",
+    "mode": "NULLABLE",
+    "name": "product_price",
+    "type": "FLOAT"
+  },
+  {
+    "description": "quantity purchased",
+    "mode": "NULLABLE",
+    "name": "purchase_size",
+    "type": "INTEGER"
+  },
+  {
+    "description": "purchase price",
+    "mode": "NULLABLE",
+    "name": "purchase_price",
+    "type": "STRING"
+  },
+  {
+    "description": "revenue",
+    "mode": "NULLABLE",
+    "name": "revenue",
+    "type": "FLOAT"
+  }
+]
