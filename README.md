@@ -5,13 +5,13 @@ A collection of 52 SQL queries I ran in Google BigQuery, grouped by topic. Each 
 | File | Queries | Dataset |
 |---|---|---|
 | `customer_address_cleaning.sql` | #1-8, #28-29 | `customer_data.customer_address` (my own project) |
-| `solar_potential.sql` | #9-10 | `bigquery-public-data.sunroof_solar` |
+| `solar_potential.sql` | #9-10 | `bigquery-public-data.sunroof_solar` (public dataset) |
 | `baby_names.sql` | #11-15, #50 | `babynames.names_2014/2015/2016` (my own project) |
-| `nyc_tree_census.sql` | #16-19 | `bigquery-public-data.new_york_trees` |
-| `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` |
+| `nyc_tree_census.sql` | #16-19 | `bigquery-public-data.new_york_trees` (public dataset) |
+| `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` (public dataset) |
 | `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project) |
 | `customer_purchase.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
-| `wikipedia_benchmark.sql` | #51-52 | `bigquery-samples.wikipedia_benchmark` |
+| `wikipedia_benchmark.sql` | #51-52 | `bigquery-samples.wikipedia_benchmark` (public dataset) |
 | `customer_purchase_schema.json` | setup, no queries | Schema for `customer_data.customer_purchase` |
 
 ## Skills covered
