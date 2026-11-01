@@ -1,6 +1,6 @@
 # BigQuery SQL Queries
 
-A collection of 50 SQL queries I ran in Google BigQuery, grouped by topic. Each query has a short note explaining what it does.
+A collection of 52 SQL queries I ran in Google BigQuery, grouped by topic. Each query has a short note explaining what it does.
 
 | File | Queries | Dataset |
 |---|---|---|
@@ -11,6 +11,7 @@ A collection of 50 SQL queries I ran in Google BigQuery, grouped by topic. Each 
 | `london_bicycles.sql` | #20-27 | `bigquery-public-data.london_bicycles` |
 | `car_data_cleaning.sql` | #30-43 | `cars.car_info` (my own project) |
 | `customer_purchase.sql` | #44-49 | `customer_data.customer_purchase` (my own project) |
+| `wikipedia_benchmark.sql` | #51-52 | `bigquery-samples.wikipedia_benchmark` |
 | `customer_purchase_schema.json` | setup, no queries | Schema for `customer_data.customer_purchase` |
 
 ## Skills covered
@@ -18,7 +19,8 @@ A collection of 50 SQL queries I ran in Google BigQuery, grouped by topic. Each 
 - Selecting columns, `DISTINCT`, `WHERE` filters
 - String functions: `LENGTH`, `SUBSTR`, `TRIM`
 - Sorting and limiting: `ORDER BY`, `ASC`/`DESC`, `LIMIT`
-- Aggregation: `AVG`
+- Aggregation: `AVG`, `SUM` with `GROUP BY`
+- Pattern matching: `LIKE` with `%` wildcards
 - Comparison operators: `>` vs `>=`
 - Data changes: `INSERT INTO ... VALUES`, `UPDATE ... SET ... WHERE` and `DELETE ... WHERE`
 - Data cleaning checks: `IS NULL`, `COUNT(*)`, spotting typos and hidden spaces with `DISTINCT` and `LENGTH`, fixing with `TRIM`
